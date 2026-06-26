@@ -27,11 +27,11 @@ export function AssessmentCard({ assessment }: { assessment: Assessment }) {
   }, [assessment.code]);
 
   return (
-    <Card className="group flex h-full flex-col transition hover:-translate-y-1 hover:shadow-xl">
+    <Card className="group flex h-full flex-col border-white/80 bg-white/90 transition hover:-translate-y-1 hover:border-indigo-100 hover:shadow-xl">
       <CardHeader className="p-5 pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-900 text-white">
+            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-950 text-white shadow-sm transition group-hover:bg-indigo-600">
               <Icon size={22} />
             </div>
             <Badge>{assessment.label}</Badge>
@@ -40,7 +40,7 @@ export function AssessmentCard({ assessment }: { assessment: Assessment }) {
             <Clock size={15} /> {assessment.estimatedTime}
           </span>
         </div>
-        <CardTitle className="text-lg leading-7">{assessment.order}. {assessment.title}</CardTitle>
+        <CardTitle className="text-lg leading-7 text-slate-950">{assessment.order}. {assessment.title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-1 flex-col gap-4 p-5 pt-0">
         <p className="text-sm leading-6 text-slate-600">{assessment.description}</p>
