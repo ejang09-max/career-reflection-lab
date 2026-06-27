@@ -4,7 +4,7 @@ export function ReflectionQuestions({ questions }: { questions: string[] }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>추천 진로성찰 질문</CardTitle>
+        <CardTitle>생각해볼 질문</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         {questions.map((question, index) => (

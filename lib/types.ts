@@ -76,6 +76,7 @@ export type StoredStudent = {
   name: string;
   email: string;
   consentEmail: boolean;
+  mode?: "guest" | "auth";
 };
 
 export type StoredResultIndex = {
@@ -91,4 +92,20 @@ export type StoredResultIndex = {
 
 export type StoredResults = {
   [resultId: string]: AssessmentResult & { consentEmail?: boolean };
+};
+
+export type Profile = {
+  id: string;
+  name: string;
+  email: string;
+  created_at?: string;
+};
+
+export type ResultListItem = {
+  id: string;
+  assessment_code: AssessmentCode;
+  assessment_title: string;
+  primary_type: string | null;
+  created_at: string;
+  result_json?: AssessmentResult;
 };

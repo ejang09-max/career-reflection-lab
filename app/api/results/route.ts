@@ -4,7 +4,7 @@ import { listMockResults, saveMockResult } from "@/lib/mockStore";
 
 export async function GET() {
   return NextResponse.json({
-    data: listMockResults().length ? listMockResults() : [createMockResult("riasec"), createMockResult("values"), createMockResult("career_anchors"), createMockResult("skills"), createMockResult("multiple_intelligences"), createMockResult("career_adaptability")],
+    data: listMockResults().length ? listMockResults() : [createMockResult("riasec"), createMockResult("values"), createMockResult("career_anchors"), createMockResult("multiple_intelligences"), createMockResult("skills"), createMockResult("career_adaptability")],
     source: "mock"
   });
 }

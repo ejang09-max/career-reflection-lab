@@ -1,12 +1,13 @@
+import Link from "next/link";
 import { AssessmentCard } from "@/components/AssessmentCard";
 import { EDUCATIONAL_NOTICE } from "@/lib/constants";
 import { assessments } from "@/lib/assessments";
 
 const perspectives = [
-  { label: "흥미", text: "내가 관심 있고 좋아하는 활동" },
-  { label: "가치", text: "내가 중요하게 여기는 기준" },
-  { label: "역량", text: "내가 잘하거나 잘할 수 있는 것" },
-  { label: "준비도", text: "변화 속에서 진로를 준비하고 실행하는 힘" }
+  { label: "흥미", text: "끌리는 활동" },
+  { label: "가치", text: "중요한 기준" },
+  { label: "역량", text: "잘할 수 있는 것" },
+  { label: "준비도", text: "실행하는 힘" }
 ];
 
 export default function SelectPage() {
@@ -15,7 +16,10 @@ export default function SelectPage() {
       <div className="mx-auto max-w-6xl">
       <section className="mb-8">
         <p className="inline-flex rounded-full border border-indigo-100 bg-white/80 px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm">Career Reflection Lab</p>
-        <h1 className="mt-4 text-3xl font-bold tracking-normal text-slate-950 sm:text-4xl">진단도구 선택</h1>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <h1 className="text-3xl font-bold tracking-normal text-slate-950 sm:text-4xl">진단도구 선택</h1>
+          <Link className="inline-flex h-10 items-center justify-center rounded-lg border bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50" href="/mypage">내 결과 보기</Link>
+        </div>
         <div className="glass-panel mt-6 rounded-lg border p-5">
           <h2 className="text-xl font-bold">보다 입체적이고 정확한 진로탐색을 시작해보세요</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -32,7 +36,7 @@ export default function SelectPage() {
         </div>
       </section>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {assessments.map((assessment) => <AssessmentCard key={assessment.code} assessment={assessment} />)}
+        {[...assessments].sort((a, b) => a.order - b.order).map((assessment) => <AssessmentCard key={assessment.code} assessment={assessment} />)}
       </div>
       <p className="mt-8 rounded-md border bg-white p-4 text-sm leading-6 text-slate-600">{EDUCATIONAL_NOTICE}</p>
       </div>

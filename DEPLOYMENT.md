@@ -152,6 +152,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 ```
 
+회원가입/로그인과 내 결과 보기를 사용하려면 Supabase Auth와 `assessment_results` 테이블 설정이 필요합니다. 테이블 생성 SQL과 RLS 정책은 `SUPABASE_SETUP.md`를 확인하세요.
+
 환경변수 설정 후에는 Vercel에서 Redeploy가 필요합니다. 로컬에서는 `.env.local` 수정 후 개발 서버를 재시작해야 합니다.
 
 ## 7. 배포 후 테스트하기
@@ -169,9 +171,38 @@ SUPABASE_SERVICE_ROLE_KEY=
 11. 결과 페이지가 표시되는지
 12. PDF 다운로드가 되는지
 13. 이메일 버튼이 mock 또는 실제 상태를 명확히 안내하는지
-14. 모바일에서도 화면이 깨지지 않는지
+14. 회원가입, 로그인, 로그아웃이 되는지
+15. `/mypage`에서 내 결과 목록이 보이는지
+16. 모바일에서도 화면이 깨지지 않는지
 
-## 8. 자주 발생하는 오류와 해결 방법
+## 8. 수정사항을 웹버전에 반영하는 방법
+
+로컬에서 수정이 끝나면 다음 순서로 진행합니다.
+
+```powershell
+git status
+npm.cmd run build
+git add .
+git commit -m "Update UI and result report layout"
+git push origin main
+```
+
+그 후 Vercel에서 확인합니다.
+
+1. Vercel Dashboard 접속
+2. 해당 프로젝트 선택
+3. Deployments 메뉴 클릭
+4. 새 배포가 `Building`에서 `Ready`로 바뀌는지 확인
+5. `Visit` 버튼으로 사이트 접속
+6. 브라우저에서 `Ctrl + F5`로 강력 새로고침
+
+주의:
+
+- GitHub에 push하지 않으면 Vercel 웹사이트에는 반영되지 않습니다.
+- 환경변수를 바꾼 경우에는 Vercel에서 Redeploy가 필요합니다.
+- PDF 폰트 파일을 추가한 경우에도 GitHub에 push되어야 Vercel에 반영됩니다.
+
+## 9. 자주 발생하는 오류와 해결 방법
 
 ### 오류: npm이 인식되지 않음
 
@@ -202,7 +233,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 ### 오류: Vercel 배포 후 PDF 한글 깨짐
 
-해결: `public/fonts` 폴더에 한글 TTF 폰트를 추가하고 `lib/pdf.tsx`의 `Font.register` 설정을 확인합니다.
+해결: `public/fonts` 폴더에 `NotoSansKR-Regular.ttf`, `NotoSansKR-Bold.ttf`를 추가하고 `lib/pdf.tsx`의 `Font.register` 설정을 확인합니다.
 
 ### 오류: 이메일이 오지 않음
 
@@ -214,7 +245,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 - Resend 발신 이메일 또는 도메인 인증 확인
 - Vercel 환경변수 설정 후 Redeploy
 
-## 9. 현재 남아 있는 제한사항
+## 10. 현재 남아 있는 제한사항
 
 ### PDF 한글 폰트
 

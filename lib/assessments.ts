@@ -9,7 +9,7 @@ export const assessments: Assessment[] = [
     perspective: "흥미",
     perspectiveDescription: "이 진단은 “내가 관심 있고 좋아하는 활동”을 탐색합니다.",
     keyQuestion: "나는 어떤 활동과 직업환경에 끌리는가?",
-    description: "내가 어떤 활동과 직업환경에 흥미를 느끼는지 확인합니다.",
+    description: "끌리는 활동과 직업환경 확인",
     detailDescription: "내가 어떤 활동과 직업환경에 흥미를 느끼는지 탐색하는 진로흥미 진단입니다. Holland의 RIASEC 6유형을 바탕으로 현실형, 탐구형, 예술형, 사회형, 진취형, 관습형 중 상대적으로 두드러지는 흥미유형을 확인합니다.",
     estimatedTime: "약 5분",
     questionCount: 30,
@@ -24,7 +24,7 @@ export const assessments: Assessment[] = [
     perspective: "가치",
     perspectiveDescription: "이 진단은 “내가 일과 삶에서 중요하게 여기는 기준”을 탐색합니다.",
     keyQuestion: "나는 진로를 선택할 때 무엇을 중요하게 여기는가?",
-    description: "일과 삶에서 중요하게 여기는 핵심 가치를 확인합니다.",
+    description: "진로 선택의 핵심 기준 확인",
     detailDescription: "내가 일과 삶에서 중요하게 여기는 가치를 확인하고, 진로 선택에서 무엇을 기준으로 삼아야 하는지 탐색하는 도구입니다.",
     estimatedTime: "약 5분",
     questionCount: 32,
@@ -35,11 +35,11 @@ export const assessments: Assessment[] = [
     code: "career_anchors",
     order: 3,
     title: "Schein 경력닻 진단",
-    label: "경력가치",
+    label: "가치",
     perspective: "가치",
     perspectiveDescription: "이 진단은 “경력 선택에서 쉽게 포기하기 어려운 핵심 기준”을 탐색합니다.",
     keyQuestion: "나는 경력에서 무엇을 쉽게 포기하기 어려운가?",
-    description: "경력을 선택할 때 쉽게 포기하기 어려운 핵심 가치와 욕구를 탐색합니다.",
+    description: "오래 몰입할 경력 조건 확인",
     detailDescription: "내가 경력을 선택하고 유지할 때 쉽게 포기하기 어려운 핵심 가치와 욕구를 탐색하는 도구입니다. 경력닻은 개인이 어떤 경력환경에서 더 오래 몰입하고 만족할 수 있는지를 성찰하는 데 도움을 줍니다.",
     estimatedTime: "약 5분",
     questionCount: 32,
@@ -47,34 +47,34 @@ export const assessments: Assessment[] = [
     topLabel: "나의 경력닻 TOP 3"
   },
   {
-    code: "skills",
-    order: 4,
-    title: "스킬진단",
-    label: "역량",
-    perspective: "역량",
-    perspectiveDescription: "이 진단은 “내가 현재 잘하거나 앞으로 개발할 수 있는 범용적 스킬”을 점검합니다.",
-    keyQuestion: "나는 어떤 스킬에서 강점을 보이며, 무엇을 보완하면 좋은가?",
-    description: "다양한 일과 학습 상황에 활용할 수 있는 범용적 스킬을 점검합니다.",
-    detailDescription: "다양한 일과 학습 상황에 활용할 수 있는 범용적 스킬을 점검하고, 나의 강점 스킬과 보완 스킬을 확인하는 도구입니다.",
-    estimatedTime: "약 4분",
-    questionCount: 24,
-    resultExample: "강점 스킬 TOP 3와 보완하면 좋은 스킬",
-    topLabel: "나의 강점 스킬 TOP 3"
-  },
-  {
     code: "multiple_intelligences",
-    order: 5,
+    order: 4,
     title: "다중지능진단",
-    label: "학습강점",
+    label: "역량",
     perspective: "역량",
     perspectiveDescription: "이 진단은 “내가 어떤 방식으로 배우고 표현할 때 강점이 드러나는지”를 탐색합니다.",
     keyQuestion: "나는 어떤 방식으로 배우고 이해할 때 더 잘 몰입하는가?",
-    description: "나의 학습방식과 강점 지능 프로파일을 탐색합니다.",
+    description: "잘 배우고 표현하는 방식 확인",
     detailDescription: "나의 학습방식과 강점 지능 프로파일을 탐색하는 자기이해 도구입니다. 능력을 확정하는 검사가 아니라, 내가 어떤 방식으로 배우고 표현할 때 더 잘 몰입하는지 살펴보는 데 목적이 있습니다.",
     estimatedTime: "약 5분",
     questionCount: 32,
     resultExample: "나의 강점 지능 TOP 3",
     topLabel: "나의 강점 지능 TOP 3"
+  },
+  {
+    code: "skills",
+    order: 5,
+    title: "스킬진단",
+    label: "역량",
+    perspective: "역량",
+    perspectiveDescription: "이 진단은 “내가 현재 잘하거나 앞으로 개발할 수 있는 범용적 스킬”을 점검합니다.",
+    keyQuestion: "나는 어떤 스킬에서 강점을 보이며, 무엇을 보완하면 좋은가?",
+    description: "현재 활용 가능한 역량 점검",
+    detailDescription: "다양한 일과 학습 상황에 활용할 수 있는 범용적 스킬을 점검하고, 나의 강점 스킬과 보완 스킬을 확인하는 도구입니다.",
+    estimatedTime: "약 4분",
+    questionCount: 24,
+    resultExample: "강점 스킬 TOP 3와 보완하면 좋은 스킬",
+    topLabel: "나의 강점 스킬 TOP 3"
   },
   {
     code: "career_adaptability",
@@ -84,7 +84,7 @@ export const assessments: Assessment[] = [
     perspective: "준비도",
     perspectiveDescription: "이 진단은 “변화하는 진로환경에 대응하고 준비하는 힘”을 점검합니다.",
     keyQuestion: "나는 변화 속에서 진로를 어떻게 준비하고 실행하는가?",
-    description: "변화하는 진로환경에 대응하기 위한 관심, 통제, 호기심, 자신감을 점검합니다.",
+    description: "변화에 대응하는 준비도 점검",
     detailDescription: "변화하는 진로환경에 대응하기 위해 필요한 진로 관심, 진로 통제, 진로 호기심, 진로 자신감을 점검하는 진로성찰 도구입니다.",
     estimatedTime: "약 4분",
     questionCount: 20,
@@ -168,8 +168,8 @@ export const questions: Question[] = [
   ...toQuestions("riasec", riasec),
   ...toQuestions("values", values),
   ...toQuestions("career_anchors", careerAnchors),
-  ...toQuestions("skills", skills),
   ...toQuestions("multiple_intelligences", intelligences),
+  ...toQuestions("skills", skills),
   ...toQuestions("career_adaptability", careerAdaptability)
 ];
 
@@ -178,5 +178,20 @@ export function getAssessment(code: AssessmentCode) {
 }
 
 export function getQuestionsByAssessment(code: AssessmentCode) {
-  return questions.filter((question) => question.assessmentCode === code).sort((a, b) => a.order - b.order);
+  return questions
+    .filter((question) => question.assessmentCode === code)
+    .sort((a, b) => {
+      const aKey = seededQuestionKey(`${code}-${a.id}`);
+      const bKey = seededQuestionKey(`${code}-${b.id}`);
+      return aKey - bKey || a.order - b.order;
+    })
+    .map((question, index) => ({ ...question, order: index + 1 }));
+}
+
+function seededQuestionKey(value: string) {
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 31 + value.charCodeAt(index)) % 1000003;
+  }
+  return hash;
 }

@@ -19,7 +19,7 @@ export function TypeScoreChart({ result }: { result: AssessmentResult }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>유형별 점수 차트</CardTitle>
+        <CardTitle>상세 점수 차트</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-80 w-full">

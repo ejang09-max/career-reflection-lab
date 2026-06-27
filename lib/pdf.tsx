@@ -6,35 +6,31 @@ import type { AssessmentResult } from "@/lib/types";
 import { EDUCATIONAL_NOTICE } from "@/lib/constants";
 
 let fontRegistered = false;
+export const PDF_FONT_MISSING_MESSAGE = "PDF 한글 폰트 파일을 찾을 수 없습니다. public/fonts/NotoSansKR-VF.ttf 또는 NotoSansKR-Regular.ttf 파일을 추가해주세요.";
 
-function registerKoreanFont() {
+export function ensureKoreanFontRegistered() {
   if (fontRegistered) return true;
 
+  const variableFont = path.join(process.cwd(), "public", "fonts", "NotoSansKR-VF.ttf");
   const publicRegular = path.join(process.cwd(), "public", "fonts", "NotoSansKR-Regular.ttf");
   const publicBold = path.join(process.cwd(), "public", "fonts", "NotoSansKR-Bold.ttf");
-  const windowsRegular = "C:\\Windows\\Fonts\\malgun.ttf";
-  const windowsBold = "C:\\Windows\\Fonts\\malgunbd.ttf";
 
-  // 배포 환경에서는 public/fonts/NotoSansKR-*.ttf 파일을 포함하는 방식이 가장 안정적입니다.
-  // Windows 로컬 개발 환경에서는 맑은 고딕을 fallback으로 사용할 수 있습니다.
-  const regular = existsSync(publicRegular) ? publicRegular : existsSync(windowsRegular) ? windowsRegular : null;
-  const bold = existsSync(publicBold) ? publicBold : existsSync(windowsBold) ? windowsBold : regular;
-
-  if (!regular) return false;
+  const regular = existsSync(variableFont) ? variableFont : publicRegular;
+  if (!existsSync(regular)) return false;
+  const bold = existsSync(publicBold) ? publicBold : regular;
 
   Font.register({
     family: "NotoSansKR",
     fonts: [
       { src: regular, fontWeight: 400 },
-      { src: bold ?? regular, fontWeight: 700 }
+      { src: bold, fontWeight: 700 }
     ]
   });
   fontRegistered = true;
   return true;
 }
 
-const fontFamily = registerKoreanFont() ? "NotoSansKR" : undefined;
-const baseText = fontFamily ? { fontFamily } : {};
+const baseText = { fontFamily: "NotoSansKR" };
 
 const styles = StyleSheet.create({
   page: { ...baseText, padding: 36, fontSize: 11, lineHeight: 1.6, color: "#0f172a" },
@@ -43,7 +39,11 @@ const styles = StyleSheet.create({
   heading: { ...baseText, fontSize: 15, marginBottom: 8, fontWeight: 700 },
   row: { flexDirection: "row", justifyContent: "space-between", borderBottom: "1 solid #e2e8f0", paddingVertical: 5 },
   muted: { ...baseText, color: "#475569" },
-  pill: { ...baseText, marginTop: 6, padding: 6, backgroundColor: "#eef2ff", color: "#3730a3" }
+  pill: { ...baseText, marginTop: 6, padding: 6, backgroundColor: "#eef2ff", color: "#3730a3" },
+  scoreBlock: { marginBottom: 8 },
+  scoreLabel: { ...baseText, marginBottom: 3, fontSize: 10 },
+  scoreTrack: { height: 8, backgroundColor: "#e0f2fe", borderRadius: 4 },
+  scoreFill: { height: 8, backgroundColor: "#0ea5e9", borderRadius: 4 }
 });
 
 export function ResultPdfDocument({ result }: { result: AssessmentResult }) {
@@ -84,6 +84,17 @@ export function ResultPdfDocument({ result }: { result: AssessmentResult }) {
         <View style={styles.section}>
           <Text style={styles.heading}>상위 3개 유형</Text>
           {topThree.map((type, index) => <Text key={type.typeCode}>{index + 1}. {type.typeName} ({type.percentage}%)</Text>)}
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.heading}>유형별 점수 그래프</Text>
+          {result.allTypes.map((type) => (
+            <View key={type.typeCode} style={styles.scoreBlock}>
+              <Text style={styles.scoreLabel}>{type.typeName} · {type.rawScore}/{type.maxScore}점 · {type.percentage}%</Text>
+              <View style={styles.scoreTrack}>
+                <View style={{ ...styles.scoreFill, width: `${type.percentage}%` }} />
+              </View>
+            </View>
+          ))}
         </View>
         <View style={styles.section}>
           <Text style={styles.heading}>진로탐색 4가지 관점</Text>

@@ -5,8 +5,8 @@ const results = [
   createMockResult("riasec"),
   createMockResult("values"),
   createMockResult("career_anchors"),
-  createMockResult("skills"),
   createMockResult("multiple_intelligences"),
+  createMockResult("skills"),
   createMockResult("career_adaptability")
 ];
 
