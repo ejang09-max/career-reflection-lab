@@ -27,7 +27,7 @@ export function AssessmentCard({ assessment }: { assessment: Assessment }) {
   }, [assessment.code]);
 
   return (
-    <Card className="group flex h-full flex-col border-white/80 bg-white/90 transition hover:-translate-y-1 hover:border-indigo-100 hover:shadow-xl">
+    <Card className="group flex h-full flex-col border-2 border-sky-600 bg-white/95 shadow-sm transition hover:-translate-y-1 hover:border-sky-700 hover:shadow-xl">
       <CardHeader className="p-5 pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -45,7 +45,7 @@ export function AssessmentCard({ assessment }: { assessment: Assessment }) {
       <CardContent className="flex flex-1 flex-col gap-4 p-5 pt-0">
         <p className="text-sm leading-6 text-slate-600">{assessment.description}</p>
         <div className="mt-auto grid gap-2 sm:grid-cols-2">
-          <Link className="inline-flex h-11 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-indigo-700" href={`/assessment/${assessment.code}`}>
+          <Link className="inline-flex h-11 w-full items-center justify-center rounded-md bg-sky-400 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500" href={`/assessment/${assessment.code}`}>
             시작하기
           </Link>
           {latestResult ? (
